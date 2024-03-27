@@ -1,0 +1,155 @@
+<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.123.7"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="08 useReducer基础用法"><meta itemprop=description content="保持简单的易用性和强大的功能。"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="https://chn.gg/images/logo.jpg"><meta itemprop=keywords content="React,Java,Go,SQL"><meta property="og:type" content="article"><meta property="og:title" content="08 useReducer基础用法"><meta property="og:description" content="保持简单的易用性和强大的功能。"><meta property="og:image" content="/images/logo.jpg"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="https://chn.gg/post/react/08.usereducer%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/"><meta property="og:site_name" content="热爱生活与梦想"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="Allen"><meta property="article:published_time" content="2023-09-07 17:36:58 +0000 UTC"><meta property="article:modified_time" content="2023-09-07 17:36:58 +0000 UTC"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.e0a6351e3c656c8120896640032aab320a6a302dcfd03cde96028362edadbfa8.css><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":true,"path":"08.usereducer%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95","permalink":"https://chn.gg/post/react/08.usereducer%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/","title":"08 useReducer基础用法","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>08 useReducer基础用法 - 热爱生活与梦想</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>热爱生活与梦想</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>没有伞的孩子要学会努力奔跑 ✊</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-about"><a href=/about.html class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-go"><a href=/categories/go/ class=hvr-icon-pulse rel=section><i class="fa fa-go hvr-icon"></i>go</a></li><li class="menu-item menu-item-react"><a href=/categories/react/ class=hvr-icon-pulse rel=section><i class="fa fa-react hvr-icon"></i>React</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>29</span></a></li><li class="menu-item menu-item-rust"><a href=/categories/rust/ class=hvr-icon-pulse rel=section><i class="fa fa-rust hvr-icon"></i>Rust</a></li><li class="menu-item menu-item-commonweal"><a href=/404.html class=hvr-icon-pulse rel=section><i class="fa fa-heartbeat hvr-icon"></i>公益 404</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-overview-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><a href=#usereducer概念解释>useReducer概念解释</a></li><li><a href=#usereducer是来解决什么问题的>useReducer是来解决什么问题的？</a></li><li><a href=#usereducer函数源码>useReducer函数源码：</a></li><li><a href=#usereducer基本用法>useReducer基本用法</a><ul><li><ul><li></li><li><a href=#reducer补充说明>&lsquo;reducer&rsquo;补充说明</a></li><li><a href=#xxx补充说明>&lsquo;xxx&rsquo;补充说明</a></li><li><a href=#dispatch补充说明>&lsquo;dispatch&rsquo;补充说明</a></li><li><a href=#initialvalue补充说明>&lsquo;initialValue&rsquo;补充说明</a></li></ul></li></ul></li><li><a href=#usereducer使用示例1>useReducer使用示例1：</a></li><li><a href=#usereducer使用示例2>useReducer使用示例2</a></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=Allen src=/imgs/img-lazy-loading.gif data-src=/images/logo.jpg><p class=site-author-name itemprop=name>Allen</p><div class=site-description itemprop=description>保持简单的易用性和强大的功能。</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>29</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>4</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>2</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/zhouzongyan title="Github → https://github.com/zhouzongyan" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+Github
+</a></span><span class=links-of-social-item><a href=https://www.zhihu.com/people/iningmeng title="知乎 → https://www.zhihu.com/people/iningmeng" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-book fa-fw hvr-icon"></i>
+知乎</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2023-05-15T20:29:27+00:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=71378></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=157></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2024-03-27T13:35:45+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a><a href=https://github.com/zhouzongyan rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg>
+</a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script><script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=https://chn.gg/post/react/08.usereducer%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/images/logo.jpg"><meta itemprop=name content="Allen"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Allen"><meta itemprop=description content="保持简单的易用性和强大的功能。"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="08 useReducer基础用法"><meta itemprop=description content="08 useReducer基础用法 useReducer概念解释 我们第四个要学习的Hook(钩子函数)是useReducer，他的作用是“勾住”某"></span><header class=post-header><h1 class=post-title itemprop="name headline">08 useReducer基础用法</h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
+</span><span class=post-meta-item-text title=发表于>发表于：
+</span><time title="创建时间：2023-09-07 17:36:58 +0000 UTC" itemprop="dateCreated datePublished" datetime="2023-09-07 17:36:58 +0000 UTC">2023-09-07
+</time></span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
+</span><span class=post-meta-item-text title=分类于>分类于：
+</span><span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/react itemprop=url rel=index><span itemprop=name>react</span></a></span></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="far fa-file-word"></i>
+</span><span class=post-meta-item-text>字数：</span>
+<span>3557</span>
+</span><span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="far fa-clock"></i>
+</span><span class=post-meta-item-text>阅读：&ap;</span>
+<span>8分钟</span>
+</span><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
+</span><span class=post-meta-item-text>浏览：
+</span><span id=busuanzi_value_page_pv data-path=/post/react/08.usereducer%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class=post-body itemprop=articleBody><h1 id=08-usereducer基础用法>08 useReducer基础用法
+<a class=header-anchor href=#08-usereducer%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95></a></h1><h2 id=usereducer概念解释>useReducer概念解释
+<a class=header-anchor href=#usereducer%e6%a6%82%e5%bf%b5%e8%a7%a3%e9%87%8a></a></h2><p>我们第四个要学习的Hook(钩子函数)是useReducer，他的作用是“勾住”某些自定义数据对应的dispatch所引发的数据更改事件。useReducer可以替代useState，实现更为复杂逻辑的数据修改。</p><p>在React 16.8版本以前，通常需要使用第三方Redux来管理React的公共数据，但自从 React Hook 概念出现以后，可以使用 useContext + useReducer 轻松实现 Redux 相似功能。这一部分会在 “useReducer高级用法” 中做详细讲解。</p><p>让我们回到useReducer基础学习中。</p><h2 id=usereducer是来解决什么问题的>useReducer是来解决什么问题的？
+<a class=header-anchor href=#usereducer%e6%98%af%e6%9d%a5%e8%a7%a3%e5%86%b3%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98%e7%9a%84></a></h2><p>答：useReducer是useState的升级版(实际上应该是原始版)，可以实现复杂逻辑修改，而不是像useState那样只是直接赋值修改。</p><p>补充说明：<br>1、在React源码中，实际上useState就是由useReducer实现的，所以useReducer准确来说是useState的原始版。<br>2、无论哪一个Hook函数，本质上都是通过事件驱动来实现视图层更新的。</p><h2 id=usereducer函数源码>useReducer函数源码：
+<a class=header-anchor href=#usereducer%e5%87%bd%e6%95%b0%e6%ba%90%e7%a0%81></a></h2><p>回到useReducer的学习中，首先看一下React源码中的
+<a href=https://github.com/facebook/react/blob/master/packages/react/src/ReactHooks.js title=ReactHooks.js rel="noopener external nofollow noreferrer" target=_blank class=exturl>ReactHooks.js
+<i class="fa fa-external-link-alt"></i>
+</a>。</p><pre><code>//备注：源码采用TypeScript编写，如果不懂TS代码，阅读起来稍显困难
+export function useReducer&lt;S, I, A&gt;(
+  reducer: (S, A) =&gt; S,
+  initialArg: I,
+  init?: I =&gt; S,
+): [S, Dispatch&lt;A&gt;] {
+  const dispatcher = resolveDispatcher();
+  return dispatcher.useReducer(reducer, initialArg, init);
+}
+</code></pre><p>上述代码看不懂没关系，本系列教程只是讲述“如何使用Hook”，并不是“Hook源码分析”。之所以贴出源码只是想让你重点看一下useReducer函数的第3个参数。一般我们只传2个参数，如果有一天你看到有人为了某些不常用的目的传了3个参数，你应该理解，第3个参数其实只是第1和第2个参数的某种转化。事实上你可以完全忽略这个问题，每次值传2个参数即可。^_^</p><h2 id=usereducer基本用法>useReducer基本用法
+<a class=header-anchor href=#usereducer%e5%9f%ba%e6%9c%ac%e7%94%a8%e6%b3%95></a></h2><p>useReducer(reducer,initialValue)函数通常传入2个参数，第1个参数为我们定义的一个“由dispatch引发的数据修改处理函数”，第2个参数为自定义数据的默认值，useReducer函数会返回自定义变量的引用和该自定义变量对应的“dispatch”。</p><p>请注意，当你看到了dispatch，肯定想到了原生JS中的EventEmitter，事实上React Hook帮我们做了底层的事件驱动处理，我们拿到的dispatch以及“事件处理函数”reducer，都时被React Hook 封装过后的，并不是真正的抛出和事件处理函数。</p><p>但是为了更容易让你理解，本文依然会在讲解useReducer时使用到“事件抛出、事件处理函数”等文字。</p><p>如果你了解事件驱动，使用过EventEmitter，或者你使用过Redux，那么你会很容易理解useReducer的用法。</p><h5 id=代码形式>代码形式：
+<a class=header-anchor href=#%e4%bb%a3%e7%a0%81%e5%bd%a2%e5%bc%8f></a></h5><pre><code>import React, { useReducer } from 'react'; //引入useReducer
+
+//定义好“事件处理函数” reducer
+function reducer(state, action) {
+  switch (action) {
+    case 'xx':
+        return xxxx;
+    case 'xx':
+        return xxxx;
+    default:
+        return xxxx;
+  }
+}
+
+function Component(){
+  //声明一个变量xxx，以及对应修改xxx的dispatch
+  //将事件处理函数reducer和默认值initialValue作为参数传递给useReducer
+  const [xxx, dispatch] = useReducer(reducer, initialValue); 
+
+  //若想获取xxx的值，直接使用xxx即可
+  
+  //若想修改xxx的值，通过dispatch来修改
+  dispatch('xx');
+}
+
+//请注意，上述代码中的action只是最基础的字符串形式，事实上action可以是多属性的object，这样可以自定义更多属性和更多参数值
+//例如 action 可以是 {type:'xx',param:xxx}
+</code></pre><h5 id=拆解说明>拆解说明：
+<a class=header-anchor href=#%e6%8b%86%e8%a7%a3%e8%af%b4%e6%98%8e></a></h5><p>1、具体讲解已在上面示例代码中做了多项注释，此处不再重复；</p><h4 id=reducer补充说明>&lsquo;reducer&rsquo;补充说明
+<a class=header-anchor href=#reducer%e8%a1%a5%e5%85%85%e8%af%b4%e6%98%8e></a></h4><p>1、reducer英文单词本身意思是“减速器、还原剂”，但是本文中一直把reducer称呼为“事件处理函数”，但事实上reducer确实扮演一个事件处理函数。<br>2、千万不要把useReducer中的reducer 和 原生JS中的Array.prototype.reduce()弄混淆，他们两个只是刚好都使用了这个reduce单词而已，两者本身没有任何内在关联。</p><h4 id=xxx补充说明>&lsquo;xxx&rsquo;补充说明
+<a class=header-anchor href=#xxx%e8%a1%a5%e5%85%85%e8%af%b4%e6%98%8e></a></h4><p>假设我们定义的变量名为xxx，那么只能通过dispatch来修改xxx，不要尝试通过 xxx = newValue 这种形式直接修改变量的值，React 不允许这样做。</p><h4 id=dispatch补充说明>&lsquo;dispatch&rsquo;补充说明
+<a class=header-anchor href=#dispatch%e8%a1%a5%e5%85%85%e8%af%b4%e6%98%8e></a></h4><p>再次强调，dispacth并不是真正的Event.dispatch，但是你完全可以把它当成Event.dispatch来理解，只不过useReducer中的dispacth(xxx)函数抛出内容不是event，而是一个包含修改信息的对象，该对象不仅可以是字符串，还可以是复杂对象。</p><h4 id=initialvalue补充说明>&lsquo;initialValue&rsquo;补充说明
+<a class=header-anchor href=#initialvalue%e8%a1%a5%e5%85%85%e8%af%b4%e6%98%8e></a></h4><p>initialValue是我们自定义变量的默认值，该值可以是简单类型(number、string)，也可以是复杂类型(object、array)。<br>推荐建议：即使该值是简单类型，也建议单独定义出来而不是直接将值写在useReducer函数中，因为单独定义可以让我们更加清晰读懂数据结构，尤其是initialValue为复杂类型时。</p><h2 id=usereducer使用示例1>useReducer使用示例1：
+<a class=header-anchor href=#usereducer%e4%bd%bf%e7%94%a8%e7%a4%ba%e4%be%8b1></a></h2><p>举例：若某React组件内部有一个变量count，默认值为0，有3个button，点击之后分别可以修改count的值。3个按钮具体的功能为：第1个button点击之后count+1，第2个button点击之后count -1，第3个button点击之后 count x 2 (翻倍)。</p><p>若使用useState来实现，那肯定没问题，每个button点击之后分别运算得到对应的新值，将该值直接通过setCount赋予给count。</p><p>若使用useReducer来实现相同功能，代码示例如下：</p><pre><code>import React, { useReducer } from 'react';
+
+function reducer(state,action){
+  switch(action){
+    case 'add':
+        return state + 1;
+    case 'sub':
+        return state - 1;
+    case 'mul':
+        return state * 2;
+    default:
+        console.log('what?');
+        return state;
+  }
+}
+
+function CountComponent() {
+  const [count, dispatch] = useReducer(reducer,0);
+
+  return &lt;div&gt;
+    {count}
+    &lt;button onClick={() =&gt; {dispatch('add')}} &gt;add&lt;/button&gt;
+    &lt;button onClick={() =&gt; {dispatch('sub')}} &gt;sub&lt;/button&gt;
+    &lt;button onClick={() =&gt; {dispatch('mul')}} &gt;mul&lt;/button&gt;
+  &lt;/div&gt;;
+}
+
+export default CountComponent;
+</code></pre><p>代码分析：<br>3个按钮点击之后，不再具体去直接修改count的值，而是采用 dispatche(&lsquo;xxx&rsquo;)的形式 “抛出修改count的事件”，事件处理函数reducer“捕获到修改count的事件后”，根据该事件携带的命令类型来进一步判断，并真正执行对count的修改。</p><p>请注意上面这句话中加引号的语句，本文只是以事件驱动的语言来描述整个过程，目的希望你能更加容易理解。</p><p>3个按钮只是负责通知reducer“我希望做什么事情”，具体怎么做完全由reducer来执行。这样实现了修改数据具体执行逻辑与按钮点击处理函数的抽离。</p><p>如果不使用useReducer，而是使用之前学习过的useState，那么对count的每一种修改逻辑代码，都必须分散写在每个按钮的点击事件处理函数中。</p><p>若只是修改count的功能，那么useReducer的优势还未全部体现出来，我们接着看另外一个示例。</p><h2 id=usereducer使用示例2>useReducer使用示例2
+<a class=header-anchor href=#usereducer%e4%bd%bf%e7%94%a8%e7%a4%ba%e4%be%8b2></a></h2><p>举例：在示例1中对count 执行的修改，数值变动都是固定的，即 +1、-1、x 2。假设我们希望按钮点击之后，能够自主控制增加多少、减多少、或乘以几，这个效果该怎么实现呢？</p><p>很简单，我们将dispatch(&lsquo;xxx&rsquo;)中的xxx由字符串改为obj，obj可以携带更多属性作为参数传给reducer。 比如之前对 &ldquo;加"的命令 dispatch(&lsquo;add&rsquo;)，修改为 dispatch({type:&lsquo;add&rsquo;,param:2})。 reducer可以通过action.type来区分是哪种命令、通过action.param来获取对应的参数。</p><p>为了简化代码，我们将在点击按钮后，随机产生一个数字，并将该数字作为 param 的值，传递给reducer。</p><p>修改后的代码为：</p><pre><code>import React, { useReducer } from 'react';
+
+function reducer(state,action){
+  //根据action.type来判断该执行哪种修改
+  switch(action.type){
+    case 'add':
+      //count 最终加多少，取决于 action.param 的值
+      return state + action.param;
+    case 'sub':
+      return state - action.param;
+    case 'mul':
+      return state * action.param;
+    default:
+      console.log('what?');
+      return state;
+  }
+}
+
+function getRandom(){
+  return Math.floor(Math.random()*10);
+}
+
+function CountComponent() {
+  const [count, dispatch] = useReducer(reducer,0);
+
+  return &lt;div&gt;
+    {count}
+    &lt;button onClick={() =&gt; {dispatch({type:'add',param:getRandom()})}} &gt;add&lt;/button&gt;
+    &lt;button onClick={() =&gt; {dispatch({type:'sub',param:getRandom()})}} &gt;sub&lt;/button&gt;
+    &lt;button onClick={() =&gt; {dispatch({type:'mul',param:getRandom()})}} &gt;mul&lt;/button&gt;
+  &lt;/div&gt;;
+}
+
+export default CountComponent;
+</code></pre><p>同样的道理，我们可以把示例中的count由简单类型改为复杂类型，来储存更多的变量。 但是，建议不要把 useReducer 对应的变量设计的过于复杂。</p><p>使用useReducer，可以让我们使用比较复杂的逻辑和参数对内部变量进行修改。</p><p>不过你是否发现，示例1和示例2中所有的变量都是在同一个组件内定义和修改的，现实项目中肯定牵扯到不同模块组件之间共享并修改某个变量，那又该怎么办呢？<br>在下一章节 useReducer高级用法 中，我们会详细讲述如何用 useReducer + useContext 来实现全局不同层级组件共享并修改某变量。</p><hr><p>至此，关于useReducer基础用法已经讲完。</p></div><footer class=post-footer><div class=addthis_inline_share_toolbox style=text-align:center></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/images/alipay.png alt="Allen - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/images/wechat.png alt="Allen - 微信">
+<span>微信</span></div></div></div><div class=post-copyright><img src=/imgs/cc/cc.svg width=75 height=75 align=right alt=共享知识><ul><li class=post-copyright-title><strong>文章标题：</strong>
+08 useReducer基础用法</li><li class=post-copyright-author><strong>本文作者： </strong>Allen</li><li class=post-copyright-link><strong>本文链接：</strong>
+<a id=post-cr-link href=https://chn.gg/post/react/08.usereducer%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/ title="08 useReducer基础用法">https://chn.gg/post/react/08.usereducer%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/</a></li><li class=post-copyright-license><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target=_blank href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i>
+</span><span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i>
+</span><span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/react/09.usereducer%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/ rel=next title="09 useReducer高级用法"><i class="fa fa-chevron-left"></i> 09 useReducer高级用法</a></div><div class="post-nav-prev post-nav-item"><a href=/post/react/07.usecontext%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/ rel=prev title="07 useContext高级用法">07 useContext高级用法
+<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div id=comments class=post-comments><div class=comment-head><div class=comment-headline><i class="fas fa-comments fa-fw"></i>
+<span>评论交流</span></div></div><div class=comment-wrap><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=giscus-container></div></div></div></div></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2010 - 2024
+</span><span class=with-love><i class="fa fa-heart"></i>
+</span><span class=author itemprop=copyrightHolder>Allen</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script><script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":false,"giscus":{"cfg":{"category":"Comments","categoryid":"DIC_kwDOJhNIsM4CeQrC","emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"zhouzongyan/zhouzongyan.github.io","repoid":"R_kgDOJhNIsA","theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://chn.gg/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o \n\n可用快捷键选取表情符号：😀😄😁🥳👻👽👀🚄\n(Window系统：Win+.，Mac系统：Control+Command+Space)","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":"https://walinejs.comment.lithub.cc","sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.0fb3547374c917d23a2e5f762b70f3698d20b46a01cc18c38f9c467aeffc99fc.js defer></script></body></html>

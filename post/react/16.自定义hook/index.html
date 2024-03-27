@@ -1,0 +1,176 @@
+<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.123.7"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="16 自定义hook"><meta itemprop=description content="保持简单的易用性和强大的功能。"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="https://chn.gg/images/logo.jpg"><meta itemprop=keywords content="React,Java,Go,SQL"><meta property="og:type" content="article"><meta property="og:title" content="16 自定义hook"><meta property="og:description" content="保持简单的易用性和强大的功能。"><meta property="og:image" content="/images/logo.jpg"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="https://chn.gg/post/react/16.%E8%87%AA%E5%AE%9A%E4%B9%89hook/"><meta property="og:site_name" content="热爱生活与梦想"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="Allen"><meta property="article:published_time" content="2023-09-18 16:40:07 +0000 UTC"><meta property="article:modified_time" content="2023-09-18 16:40:07 +0000 UTC"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.e0a6351e3c656c8120896640032aab320a6a302dcfd03cde96028362edadbfa8.css><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":true,"path":"16.%E8%87%AA%E5%AE%9A%E4%B9%89hook","permalink":"https://chn.gg/post/react/16.%E8%87%AA%E5%AE%9A%E4%B9%89hook/","title":"16 自定义hook","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>16 自定义hook - 热爱生活与梦想</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>热爱生活与梦想</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>没有伞的孩子要学会努力奔跑 ✊</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-about"><a href=/about.html class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-go"><a href=/categories/go/ class=hvr-icon-pulse rel=section><i class="fa fa-go hvr-icon"></i>go</a></li><li class="menu-item menu-item-react"><a href=/categories/react/ class=hvr-icon-pulse rel=section><i class="fa fa-react hvr-icon"></i>React</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>29</span></a></li><li class="menu-item menu-item-rust"><a href=/categories/rust/ class=hvr-icon-pulse rel=section><i class="fa fa-rust hvr-icon"></i>Rust</a></li><li class="menu-item menu-item-commonweal"><a href=/404.html class=hvr-icon-pulse rel=section><i class="fa fa-heartbeat hvr-icon"></i>公益 404</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-overview-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><a href=#自定义hook概念解释>自定义hook概念解释</a></li><li><a href=#自定义hook是来解决什么问题的>自定义hook是来解决什么问题的？</a></li><li><a href=#自定义hook基本用法>自定义hook基本用法</a><ul><li><ul><li></li></ul></li></ul></li><li><a href=#不带返回值的自定义hook使用示例>不带返回值的自定义hook使用示例：</a></li><li><a href=#带普通返回值的自定义hook使用示例>带普通返回值的自定义hook使用示例：</a></li><li><a href=#带特殊结构返回值的自定义hook使用示例>带特殊结构返回值的自定义hook使用示例：</a></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=Allen src=/imgs/img-lazy-loading.gif data-src=/images/logo.jpg><p class=site-author-name itemprop=name>Allen</p><div class=site-description itemprop=description>保持简单的易用性和强大的功能。</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>29</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>4</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>2</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/zhouzongyan title="Github → https://github.com/zhouzongyan" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+Github
+</a></span><span class=links-of-social-item><a href=https://www.zhihu.com/people/iningmeng title="知乎 → https://www.zhihu.com/people/iningmeng" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-book fa-fw hvr-icon"></i>
+知乎</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2023-05-15T20:29:27+00:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=71378></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=157></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2024-03-27T13:35:45+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a><a href=https://github.com/zhouzongyan rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg>
+</a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script><script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=https://chn.gg/post/react/16.%E8%87%AA%E5%AE%9A%E4%B9%89hook/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/images/logo.jpg"><meta itemprop=name content="Allen"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="Allen"><meta itemprop=description content="保持简单的易用性和强大的功能。"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="16 自定义hook"><meta itemprop=description content="16 自定义hook 自定义hook概念解释 像useState、useEffect、useContext、useReducer、useCallba"></span><header class=post-header><h1 class=post-title itemprop="name headline">16 自定义hook</h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i>
+</span><span class=post-meta-item-text title=发表于>发表于：
+</span><time title="创建时间：2023-09-18 16:40:07 +0000 UTC" itemprop="dateCreated datePublished" datetime="2023-09-18 16:40:07 +0000 UTC">2023-09-18
+</time></span><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i>
+</span><span class=post-meta-item-text title=分类于>分类于：
+</span><span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/react itemprop=url rel=index><span itemprop=name>react</span></a></span></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="far fa-file-word"></i>
+</span><span class=post-meta-item-text>字数：</span>
+<span>4134</span>
+</span><span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="far fa-clock"></i>
+</span><span class=post-meta-item-text>阅读：&ap;</span>
+<span>9分钟</span>
+</span><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i>
+</span><span class=post-meta-item-text>浏览：
+</span><span id=busuanzi_value_page_pv data-path=/post/react/16.%E8%87%AA%E5%AE%9A%E4%B9%89hook/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class=post-body itemprop=articleBody><h1 id=16-自定义hook>16 自定义hook
+<a class=header-anchor href=#16-%e8%87%aa%e5%ae%9a%e4%b9%89hook></a></h1><h2 id=自定义hook概念解释>自定义hook概念解释
+<a class=header-anchor href=#%e8%87%aa%e5%ae%9a%e4%b9%89hook%e6%a6%82%e5%bf%b5%e8%a7%a3%e9%87%8a></a></h2><p>像useState、useEffect、useContext、useReducer、useCallback、useMemo、useRef、useImperativeHandle、useLayoutEffect、useDebugValue这10个hook是react默认自带的hook，而所谓自定义hook就是由我们自己编写的hook。</p><p>所谓自定义hook就是把原来写在函数组件内的hook相关代码抽离出来，单独定义成一个函数，而这个抽离出来的hook函数就称之为“自定义hook钩子函数”，简称“自定义hook”。</p><h2 id=自定义hook是来解决什么问题的>自定义hook是来解决什么问题的？
+<a class=header-anchor href=#%e8%87%aa%e5%ae%9a%e4%b9%89hook%e6%98%af%e6%9d%a5%e8%a7%a3%e5%86%b3%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98%e7%9a%84></a></h2><p>答：自定义hook是将原来在组件中编写的相关hook代码抽离出组件，让hook相关代码独立存在，达到优化代码结构、相关hook代码可以重复使用的目的。</p><p>补充说明：<br>1、如果你在别人的项目代码中，发现除了react默认自带的那10个hook以外，出现了 useXxx() 这样的看着像hook的函数，可以肯定那些就是自定义的hook。<br>2、随着react新版本发布，可能会出现更多新的、默认自带的hook。</p><h2 id=自定义hook基本用法>自定义hook基本用法
+<a class=header-anchor href=#%e8%87%aa%e5%ae%9a%e4%b9%89hook%e5%9f%ba%e6%9c%ac%e7%94%a8%e6%b3%95></a></h2><p>首先我们知道hook只能用在函数组件中，而函数组件本身是一个稍微特殊的函数，尽管稍微特殊但毕竟他也遵循一般函数的使用规律。 所谓“把原来写在函数组件内的hook相关代码抽离出来，单独定义成一个函数” 本质上就是把函数内部定义的变量或方法拿出来，放到函数外面单独定义成一个函数。</p><p>这个抽离出来新定义的函数，遵循JS默认的函数用法，即函数参数可以任意设定，返回值也可以是任意内容。</p><p>请注意：react规定所有的自定义hook函数命名时必须使用 useXxx 这种形式。</p><p>举一个最简单的例子：假设我们有一个组件，组件内部有一个count的变量，我们的代码之前是这样的：</p><pre><code>import React,{useState} from 'react'
+function CurrentComponent() {
+  const [count,setCount] = useState(0);//请注意这行代码，就是我们要即将抽离出去的hook
+  return (
+    &lt;div&gt;
+        {count}
+        &lt;button onClick={() =&gt; setCount(count+1)}&gt;add +1&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+export default CurrentComponent
+</code></pre><p>在上面这个组件中，通过 const [count,setCount] = useState(0) 定义了组件内的变量count和修改count的方法。那我们现在将这行相关的hook抽离出函数组件。我们计划把抽离出来的、和count相关的函数，命名为useCount，修改后的代码如下：</p><pre><code>//useCount.js
+import {useState} from 'react'；
+function useCount(initialValue){
+
+  //依然使用 useState 创建countcount和setCount
+  //并且将参数initialValue的值赋予给count作为默认值
+  //将创建好的count和setCount作为函数返回值 return 出去
+
+  const [count,setCount] = useState(initialValue);
+  return [count,setCount];
+}
+export default useCount;
+
+//CurrentComponent.js
+import React from 'react'
+import useCount from './useCount';//引入useCount
+function CurrentComponent() {
+  const [count,setCount] = useCount(0);//请注意这里使用的是useCount，而不是useState
+  return (
+    &lt;div&gt;
+        {count}
+        &lt;button onClick={() =&gt; setCount(count+1)}&gt;add +1&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+export default CurrentComponent
+</code></pre><h5 id=代码分析>代码分析：
+<a class=header-anchor href=#%e4%bb%a3%e7%a0%81%e5%88%86%e6%9e%90></a></h5><p>1、我们将原本组件内定义的count相关代码抽离出组件，单独定义一个 useCount 函数。<br>2、组件需要使用 useCount，只需先引入useCount，然后把 useCount 当成普通函数使用就好了。<br>3、useCount就是我们自定义的hook。</p><p>注意：一般自定义hook顶部是不需要引入React的，只需要引入使用到的 hook 函数即可。<br>例如上面 useCount 顶部，我们写的是 import {useState} from &lsquo;react&rsquo; 而不是 import React,{useState} from &lsquo;react&rsquo;；</p><p>上面举例中的useCount非常简单，内部并没有过多逻辑，在实际开发中自定义hook内部肯定要有比较复杂的逻辑。</p><p>由于是单独定义的，所以自定义hook可以同时被多个组件引入和使用，达到代码复用的目的。</p><p>划重点，在实际项目中，通常自定义hook返回值有3种表现形式：<br>1、不带返回值的函数<br>2、带普通返回值的函数<br>3、带特殊结构返回值的函数</p><p>以上3种不同返回值各有各的适用场景，下面就以实际示例来逐一说明。</p><h2 id=不带返回值的自定义hook使用示例>不带返回值的自定义hook使用示例：
+<a class=header-anchor href=#%e4%b8%8d%e5%b8%a6%e8%bf%94%e5%9b%9e%e5%80%bc%e7%9a%84%e8%87%aa%e5%ae%9a%e4%b9%89hook%e4%bd%bf%e7%94%a8%e7%a4%ba%e4%be%8b></a></h2><p>举例：若父组件内有多个子组件，每个子组件内部都有不同的业务代码，但是所有子组件有一个相同的功能，就是当自身内部变量value发生变化时，将网页标题改为变量value的值。</p><p>首先我们知道修改网页标题是在组件内部的useEffect()函数中修改，那结合上面的使用场景，我们可以将useEffect()单独抽离出来，作为一个自定义hook，命名为 useDocumentTitle，让所有子组件都复用这个useDocumentTitle。</p><p>useDocumentTitle 代码如下：</p><pre><code>import {useEffect} from 'react'
+function useDocumentTitle(value) {
+  useEffect(() =&gt; {
+    document.title = value;
+  },[value]);
+}
+export default useDocumentTitle;
+</code></pre><p>假设我们其中一个子组件的功能为：<br>1、有1个number类型的变量count<br>2、有1个按钮，点击按钮后将count修改为一个随机数字<br>3、当组件重新渲染完成后，将网页标题修改为count的值</p><p>子组件代码为：</p><pre><code>import React,{useState} from 'react'
+import useDocumentTitle from './useDocumentTitle';
+function ChildComponent() {
+  const [count,setCount] = useState(0);
+  useDocumentTitle(count);//把内部变量count传给useDocumentTitle，既作为网页标题内容，同时也作为useEffect的变量依赖
+  return (
+    &lt;div&gt;
+        &lt;button onClick={() =&gt; setCount(Math.floor(Math.random()*1000))}&gt;click me&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+export default ChildComponent
+</code></pre><p>其他子组件也使用useDocumentTitle，这样我们便将原本每个子组件都需要编写的useEffect改为统一的useDocumentTitle，实现了代码复用。</p><p>应用场景小总结：<br>在这个示例中，useDocumentTitle函数并没有任何返回值，子组件使用useDocumentTitle时就好像原本那段useEffect代码本身就定义在那里似的。</p><h2 id=带普通返回值的自定义hook使用示例>带普通返回值的自定义hook使用示例：
+<a class=header-anchor href=#%e5%b8%a6%e6%99%ae%e9%80%9a%e8%bf%94%e5%9b%9e%e5%80%bc%e7%9a%84%e8%87%aa%e5%ae%9a%e4%b9%89hook%e4%bd%bf%e7%94%a8%e7%a4%ba%e4%be%8b></a></h2><p>在本章最开始讲解“自定义hook基本用法”时，所举的useCount例子非常简单，这次我们将对useCount进行功能上的扩展。</p><p>原本useCount只是定义了count和setCount，这次所谓的功能扩展，就是将setCount改为其他几种修改count的函数。<br>例如：<br>1、添加 add()<br>2、减去 sub()<br>3、相乘 mul()<br>4、恢复初始值 reset()</p><p>修改后的useCount代码为：</p><pre><code>import {useState} from 'react'
+function useCount(initialValue){
+  const [count,setCount] = useState(initialValue);
+  const add = param =&gt; {setCount(prev =&gt; prev + param);}
+  const sub = param =&gt; {setCount(prev =&gt; prev - param);}
+  const mul = param =&gt; {setCount(prev =&gt; prev * param);}
+  const reset = () =&gt; {setCount(() =&gt; initialValue);}
+  return [count,add,sub,mul,reset]; //将count和定义的4个方法作为返回值 return 出去
+}
+export default useCount;
+</code></pre><p>请注意：为了避免4个修改函数中得到的是旧的count，所以我们采用的是 setCount(prev => xxxxx) 这种修改方式，而不是直接使用 setCount(count xxx)。</p><p>CurrentComponent组件想使用useCount，代码为：</p><pre><code>import React from 'react'
+import useCount from './useCount'
+
+function CurrentComponent() {
+  const [count,add,sub,mul,reset] = useCount(0); //使用useCount，并解构useCount的返回值
+  return (
+    &lt;div&gt;
+        {count}
+        &lt;button onClick={() =&gt; {add(1)}}&gt;+ 1&lt;/button&gt;
+        &lt;button onClick={() =&gt; {sub(1)}}&gt;- 1&lt;/button&gt;
+        &lt;button onClick={() =&gt; {mul(2)}}&gt;* 2&lt;/button&gt;
+        &lt;button onClick={() =&gt; {reset()}}&gt;reset&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}
+export default CurrentComponent
+</code></pre><p>对于上面这个效果，你是否觉得眼熟？ 没错，在讲解useReducer时，就使用useReducer实现了类似的一个效果。 只不过这次是为了讲解自定义hook，而那次是讲解如何使用useReducer替代useState实现复杂的业务。</p><p>应用场景小总结：<br>1、我们可以在自定义hook中编写相关业务逻辑函数(方法)，并通过返回值的形式 return 出去，供其他组件调用。</p><h2 id=带特殊结构返回值的自定义hook使用示例>带特殊结构返回值的自定义hook使用示例：
+<a class=header-anchor href=#%e5%b8%a6%e7%89%b9%e6%ae%8a%e7%bb%93%e6%9e%84%e8%bf%94%e5%9b%9e%e5%80%bc%e7%9a%84%e8%87%aa%e5%ae%9a%e4%b9%89hook%e4%bd%bf%e7%94%a8%e7%a4%ba%e4%be%8b></a></h2><p>上一个代码示例讲解了“带普通返回值”的自定义hook，那这次要讲的“带特殊结构返回值”的自定义hook究竟差别在哪里？</p><p>“带特殊结构返回值”中的特殊是指？<br>答：我们把组件需要用到的多项属性设置，合并为一个对象 并 return 出去，供组件使用。</p><p>还是以示例来讲解会更容易理解，假设我们有一个登录组件，功能为：<br>1、有一个用户名输入框<br>2、有一个密码输入框<br>3、有一个提交按钮</p><p>补充说明，为了简化代码，我们并不做真正的登录验证，点击提交按钮后：<br>1、仅仅是alert一下用户名和密码，即表示登录<br>2、同时清除用户名和密码输入框里的内容</p><p>需求分析：<br>1、每个输入框都是一个&lt;input>，都需要绑定一个变量，都需要设置onChange事件<br>2、每一个输入框都需要清空内容</p><p>我们将定义一个自定义hook，命名为useInput，useInput来实现这2个输入框共有的业务逻辑。</p><p>useInput的代码为：</p><pre><code>import {useState} from 'react'
+function useInput(initialValue) {
+  const [value,setValue] = useState(initialValue); //定义输入框对应的值value
+  //定义reset函数，用来重置输入框
+  const reset = () =&gt; {
+    setValue(initialValue);
+  }
+  //定义一个 bind 对象，该对象有 value 和 onChange 2个属性
+  const bind = {
+    value,
+    onChange: eve =&gt; {
+        setValue(eve.target.value)
+    }
+  }
+  return [value,reset,bind];//将输入框的值、重置输入框函数、定义的bind对象作为返回值 return 出去
+}
+export default useInput
+</code></pre><p>请注意：在useInput中，返回值 value、reset 我们很容易理解，但是 bind 是来做什么的？<br>答：这个 bind 就是我们前面提到的“带特殊结构返回值”，bind对象本身结构由2个属性value和onChange组成。<br>至于 bind 怎么用，很快揭晓。</p><p>登录组件LoginForm的代码为：</p><pre><code>import React from 'react'
+import useInput from './useInput';
+function LoginForm() {
+  const [usename,resetUsename,bindUsename] = useInput(''); //定义用户名输入框相关的变量
+  const [password,resetPassword,bindPassword] = useInput(''); //定义密码输入框相关的变量
+
+  const submitHandle = (eve) =&gt; {
+    eve.preventDefault(); //阻止form真正提交
+    alert(`usename:${usename}\rpassword:${password}`); //通过alert，弹出用户名和密码的值
+    resetUsename(); //重置用户名输入框
+    resetPassword(); //重置密码输入框
+  }
+
+  //请特别留意用户名和密码输入框中的 {...bindUsename}和{...bindPassword}
+  return (
+    &lt;form onSubmit={submitHandle}&gt;
+        &lt;label&gt;usename:&lt;/label&gt;
+        &lt;input type='text' {...bindUsename} /&gt;
+        &lt;label&gt;password:&lt;/label&gt;
+        &lt;input type='password' {...bindPassword} /&gt;
+        &lt;input type='submit' value='login' /&gt;
+    &lt;/form&gt;
+  )
+}
+export default LoginForm;
+</code></pre><p>对于获取输入框的值、以及调用输入框对应的reset()函数，相信你很容易理解。</p><p>下面对 {&mldr;bindUsename} 和 {&mldr;bindPassword} 做进一步说明：<br>1、首先我们知道 {&mldr;obj} 这种在原生JS中，相当于把obj对象进行解构，然后得到一个浅拷贝的新对象。<br>2、但是在上面的代码中并不是这个意思，千万不要被迷惑。 在JSX中的某组件，如果要添加某属性，格式为 xxx={xxx}。</p><p>例如常见的给一个输入框绑定某变量，同时添加onChange事件，一般写法为：</p><pre><code>&lt;input type='text' value={xx} onChange={xxxx} /&gt;
+</code></pre><p>而我们本次代码中，采用的是：</p><pre><code>&lt;input type='text' {...bindUsename} /&gt;
+&lt;input type='password' {...bindPassword} /&gt;
+</code></pre><p>这里面的 {&mldr;bindUsename} {&mldr;bindPassword} 其实相当于把 bindUsename 和 bindPassword 进行了解构，就好像直接写在这里似的。</p><p>如果&lt;input>中有非常多相同的属性，那么把这些相同属性提炼到 useInput 的 bind 中，这样可以简化组件里的代码。</p><p>应用场景小总结：<br>1、在自定义hook中，将组件需要的多项属性合并成一个对象，供组件属性解构使用，会简化组件代码，提高代码复用率。</p><p>相信通过上面3个示例，对自定义hook的返回值不同形式的演示，举一反三，会帮助你灵活的编写自定义hook。</p><hr><p>至此，关于自定义hook已经讲完。</p><p>我们对之前所有学过的hook进行一次小总结。</p></div><footer class=post-footer><div class=addthis_inline_share_toolbox style=text-align:center></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/images/alipay.png alt="Allen - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/images/wechat.png alt="Allen - 微信">
+<span>微信</span></div></div></div><div class=post-copyright><img src=/imgs/cc/cc.svg width=75 height=75 align=right alt=共享知识><ul><li class=post-copyright-title><strong>文章标题：</strong>
+16 自定义hook</li><li class=post-copyright-author><strong>本文作者： </strong>Allen</li><li class=post-copyright-link><strong>本文链接：</strong>
+<a id=post-cr-link href=https://chn.gg/post/react/16.%E8%87%AA%E5%AE%9A%E4%B9%89hook/ title="16 自定义hook">https://chn.gg/post/react/16.%E8%87%AA%E5%AE%9A%E4%B9%89hook/</a></li><li class=post-copyright-license><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target=_blank href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i>
+</span><span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i>
+</span><span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/react/17.react-hook-%E6%80%BB%E7%BB%93/ rel=next title="17 React Hook 总结"><i class="fa fa-chevron-left"></i> 17 React Hook 总结</a></div><div class="post-nav-prev post-nav-item"><a href=/post/react/15.usedebugvalue%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/ rel=prev title="15 useDebugValue基础用法">15 useDebugValue基础用法
+<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div id=comments class=post-comments><div class=comment-head><div class=comment-headline><i class="fas fa-comments fa-fw"></i>
+<span>评论交流</span></div></div><div class=comment-wrap><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=giscus-container></div></div></div></div></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2010 - 2024
+</span><span class=with-love><i class="fa fa-heart"></i>
+</span><span class=author itemprop=copyrightHolder>Allen</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script><script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":false,"giscus":{"cfg":{"category":"Comments","categoryid":"DIC_kwDOJhNIsM4CeQrC","emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"zhouzongyan/zhouzongyan.github.io","repoid":"R_kgDOJhNIsA","theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://chn.gg/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o \n\n可用快捷键选取表情符号：😀😄😁🥳👻👽👀🚄\n(Window系统：Win+.，Mac系统：Control+Command+Space)","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":"https://walinejs.comment.lithub.cc","sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.0fb3547374c917d23a2e5f762b70f3698d20b46a01cc18c38f9c467aeffc99fc.js defer></script></body></html>
